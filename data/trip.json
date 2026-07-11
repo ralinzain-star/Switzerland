@@ -1399,23 +1399,23 @@
     },
     {
       "id": "z-abnb",
-      "name": "蘇黎世 · Airbnb（兩晚整套）",
-      "name_en": "Zürich · Airbnb (whole place, 2 nights)",
-      "name_de": "Zürich · Airbnb (2 Nächte)",
-      "nameLocal": "Airbnb Zürich",
+      "name": "Killwangen-Spreitenbach · Airbnb（蘇黎世近郊，兩晚整套）",
+      "name_en": "Killwangen-Spreitenbach · Airbnb (Zürich suburb, whole place, 2 nights)",
+      "name_de": "Killwangen-Spreitenbach · Airbnb (2 Nächte)",
+      "nameLocal": "Airbnb Killwangen-Spreitenbach",
       "city": "zurich",
       "cat": "hotel",
-      "lat": 47.3769,
-      "lng": 8.5417,
+      "lat": 47.4333125,
+      "lng": 8.3541462,
       "price_chf": 600,
       "price_twd": 22800,
       "hours": "Check-in 依房東",
-      "desc": "✅ 已訂 · 整套房源含廚房 · 7/18–7/20 兩晚（→ Dina）· 📍地圖為市中心概略位置，確切地址訂房後由房東提供",
-      "desc_en": "✅ Booked · whole place w/ kitchen · 7/18–7/20, 2 nights (→ Dina) · 📍 marker is approx. city centre; exact address from host after booking",
-      "desc_de": "✅ Gebucht · ganze Wohnung mit Küche · 18.–20.7. (→ Dina) · 📍 ungefähre Lage",
-      "addr": "蘇黎世市區（概略）",
-      "addr_en": "Zürich city (approx.)",
-      "addr_de": "Zürich (ungefähr)",
+      "desc": "✅ 已訂 · 整套房源含廚房 · 7/18–7/20 兩晚（→ Dina）· 位 Killwangen-Spreitenbach，S12 到蘇黎世 HB 約 19 分（每 20 分一班）· 看球在一站外的 Dietikon GLEIS21",
+      "desc_en": "✅ Booked · whole place w/ kitchen · 7/18–7/20 (→ Dina) · at Killwangen-Spreitenbach, S12 ~19 min to Zürich HB (every 20 min) · football at GLEIS21 Dietikon, 1 stop away",
+      "desc_de": "✅ Gebucht · ganze Wohnung · Killwangen-Spreitenbach, S12 ~19 Min nach Zürich HB",
+      "addr": "Killwangen-Spreitenbach 車站附近",
+      "addr_en": "near Killwangen-Spreitenbach station",
+      "addr_de": "beim Bahnhof Killwangen-Spreitenbach",
       "url": "https://www.airbnb.com/l/imXZ78IT"
     },
     {
@@ -1438,6 +1438,27 @@
       "addr_en": "Interlaken town (approx.)",
       "addr_de": "Interlaken (ungefähr)",
       "url": "https://www.airbnb.com.tw/rooms/994937274855398532"
+    },
+    {
+      "id": "z-fifa",
+      "name": "FIFA 足球博物館",
+      "name_en": "FIFA World Football Museum",
+      "name_de": "FIFA Museum",
+      "nameLocal": "FIFA World Football Museum",
+      "city": "zurich",
+      "cat": "attraction",
+      "lat": 47.3641,
+      "lng": 8.5307,
+      "price_chf": 26,
+      "price_twd": 988,
+      "hours": "週二–日 10:00–18:00（週一休）",
+      "desc": "⚽ 世界盃獎盃＋足球史 3 層 3000㎡ · 成人 CHF 26，持 STP 免費 · Bahnhof Enge 旁 · 館內 Sportsbar 1904 晚上可看球",
+      "desc_en": "⚽ World Cup trophy + 3 floors of football history · CHF 26, free with Swiss Travel Pass · by Bahnhof Enge · Sportsbar 1904 inside shows matches at night",
+      "desc_de": "⚽ WM-Pokal + 3 Etagen Fussballgeschichte · CHF 26, mit STP gratis · beim Bahnhof Enge",
+      "addr": "Tessinerplatz / Seestrasse 27",
+      "addr_en": "Tessinerplatz / Seestrasse 27",
+      "addr_de": "Tessinerplatz / Seestrasse 27",
+      "url": "https://www.fifamuseum.com/"
     }
   ],
   "schedule": [
@@ -1532,7 +1553,7 @@
         },
         {
           "sh": 12,
-          "eh": 17,
+          "eh": 14,
           "name": "班霍夫大街＋Bürkliplatz＋湖畔散步",
           "name_en": "Bahnhofstrasse + Bürkliplatz + lake promenade",
           "name_de": "Bahnhofstrasse + Bürkliplatz + Seepromenade",
@@ -1540,6 +1561,18 @@
           "note": "☕ 不趕景點，湖邊最適合集合",
           "note_en": "Easy pace — the lake is the meeting point",
           "note_de": "Gemütlich — Treffpunkt am See"
+        },
+        {
+          "sh": 14,
+          "eh": 16,
+          "name": "⚽ FIFA 足球博物館",
+          "name_en": "⚽ FIFA World Football Museum",
+          "name_de": "⚽ FIFA Museum",
+          "cat": "attraction",
+          "note": "世界盃獎盃＋足球史 3 層 · 週二–日 10:00–18:00（週一休）· 成人 CHF 26，持 STP 免費 · Tessinerplatz（Bahnhof Enge，電車/S-Bahn 幾分鐘）· 逛約 1.5–2 小時 · 館內 Sportsbar 1904 晚上也能看球",
+          "note_en": "World Cup trophy + 3 floors of football history · Tue–Sun 10–18 (closed Mon) · CHF 26, free with Swiss Travel Pass · Tessinerplatz (Bahnhof Enge) · ~1.5–2h · Sportsbar 1904 inside shows matches at night",
+          "note_de": "WM-Pokal + 3 Etagen Fussballgeschichte · Di–So 10–18 (Mo zu) · mit STP gratis · Tessinerplatz · ~1,5–2 Std",
+          "map": "https://www.google.com/maps/search/?api=1&query=FIFA+World+Football+Museum+Z%C3%BCrich"
         },
         {
           "sh": 17,
@@ -1567,17 +1600,17 @@
           "reservation": false
         },
         {
-          "sh": 22.5,
-          "eh": 23.5,
-          "name": "🏆 世足季軍賽 @ 運動酒吧",
-          "name_en": "🏆 World Cup 3rd-place match at a pub",
-          "name_de": "🏆 WM-Spiel um Platz 3 im Pub",
+          "sh": 23,
+          "eh": 25,
+          "name": "🏆 世足季軍賽 @ GLEIS21 Dietikon",
+          "name_en": "🏆 World Cup 3rd-place match @ GLEIS21 Dietikon",
+          "name_de": "🏆 WM-Spiel um Platz 3 @ GLEIS21 Dietikon",
           "cat": "other",
-          "note": "邁阿密 17:00 = 瑞士 23:00 開球，約 01:00 結束 · 推薦 Mr. Pickwick 或 Oliver Twist（老城）· 時差剛好不想睡！",
-          "note_en": "Miami 17:00 = 23:00 CH kickoff, ends ~01:00 · Mr. Pickwick or Oliver Twist in the old town · jet lag works in your favour!",
-          "note_de": "Anstoss 23:00 · Mr. Pickwick / Oliver Twist",
-          "restaurant": "Mr. Pickwick Pub / Oliver Twist Pub",
-          "map": "https://www.google.com/maps/search/?api=1&query=Mr+Pickwick+Pub+Z%C3%BCrich",
+          "note": "⚽ 23:00 開球（邁阿密 17:00）· 一場約 2 小時（2×45＋中場 15＋補時），正規約 00:55 結束；季軍賽平手直接 PK、無延長賽，最晚約 01:15 · 看球：住宿旁 Dietikon GLEIS21（回程 1 站、週六有夜間網 SN1／SN11）或蘇黎世市中心 bar（見對話推薦）",
+          "note_en": "⚽ 23:00 kickoff · ~2h match (2×45 + 15 halftime + stoppage), ends ~00:55; 3rd-place goes straight to penalties (no extra time), latest ~01:15 · Watch at GLEIS21 Dietikon (1 stop home, Sat night network) or a Zürich city-centre bar",
+          "note_de": "⚽ Anstoss 23:00 · ~2 Std, Ende ~00:55; Spiel um Platz 3 ohne Verlängerung (direkt Penalty), spätestens ~01:15",
+          "restaurant": "GLEIS21 Dietikon（Buchsackerstrasse 21，緊鄰 Dietikon 車站）",
+          "map": "https://www.google.com/maps/search/?api=1&query=GLEIS21+Dietikon",
           "reservation": false
         }
       ]
@@ -1663,17 +1696,17 @@
           "reservation": false
         },
         {
-          "sh": 20,
+          "sh": 21,
           "eh": 23.5,
-          "name": "🏆 世足冠軍賽 @ 運動酒吧",
-          "name_en": "🏆 World Cup FINAL at a pub",
-          "name_de": "🏆 WM-FINALE im Pub",
+          "name": "🏆 世足冠軍賽 @ GLEIS21 Dietikon",
+          "name_en": "🏆 World Cup FINAL @ GLEIS21 Dietikon",
+          "name_de": "🏆 WM-FINALE @ GLEIS21 Dietikon",
           "cat": "other",
-          "note": "紐澤西 15:00 = 瑞士 21:00 開球 · ⚠️ 決賽夜爆滿，20:00 前到佔位 · 中場秀 Madonna/Shakira/BTS · 隔天 09:10 火車去琉森，看完就睡",
-          "note_en": "NJ 15:00 = 21:00 CH kickoff · ⚠️ packed on final night — grab seats by 20:00 · halftime show: Madonna/Shakira/BTS · 09:10 train to Lucerne tomorrow",
-          "note_de": "Anstoss 21:00 · ab 20:00 Platz sichern",
-          "restaurant": "Mr. Pickwick Pub / Oliver Twist Pub",
-          "map": "https://www.google.com/maps/search/?api=1&query=Oliver+Twist+Pub+Z%C3%BCrich",
+          "note": "⚽ 21:00 開球（紐澤西 15:00）· 正規時間約 22:55 結束；冠軍賽平手有延長賽（＋30 分）約 23:35，再 PK 可能到 00:00 前後 · ⚠️ 決賽爆滿，早到或先訂位 · 看球：住宿旁 Dietikon GLEIS21（回程 1 站最保險）或市中心 bar；週日無夜間網，若打到 PK 要留意末班車 · 隔天 09:10 去琉森",
+          "note_en": "⚽ 21:00 kickoff · regulation ends ~22:55; the final has extra time (+30 min) to ~23:35, penalties could run to ~00:00 · ⚠️ packed — arrive early/reserve · GLEIS21 Dietikon (1 stop, safest) or a city-centre bar; no Sun night network, mind the last train if it goes to penalties · 09:10 train to Lucerne tomorrow",
+          "note_de": "⚽ Anstoss 21:00 · regulär ~22:55; Finale mit Verlängerung (~23:35), Penalty bis ~00:00 · So kein Nachtnetz — letzte Bahn beachten · morgen 09:10 nach Luzern",
+          "restaurant": "GLEIS21 Dietikon（Buchsackerstrasse 21，緊鄰 Dietikon 車站）",
+          "map": "https://www.google.com/maps/search/?api=1&query=GLEIS21+Dietikon",
           "reservation": false
         }
       ]

@@ -116,7 +116,7 @@ button { font-family: var(--font); }
 .bb-lang-menu.open { display: flex; flex-direction: column; gap: 2px; }
 
 /* ===== Main ===== */
-.main { margin-left: var(--sidebar-w); flex: 1; padding: 32px 40px; max-width: 1300px; }
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; padding: 32px 40px; max-width: 1300px; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
