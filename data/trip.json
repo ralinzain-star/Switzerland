@@ -603,7 +603,8 @@
       "desc_de": "✅ Gebucht · Gefängnis-Hostel",
       "addr": "Löwengraben 18",
       "addr_en": "Löwengraben 18",
-      "addr_de": "Löwengraben 18"
+      "addr_de": "Löwengraben 18",
+      "url": "https://www.booking.com/hotel/ch/liberte-luzern.html"
     },
     {
       "id": "l8",
@@ -1015,7 +1016,8 @@
           "text_de": "Nach der letzten Bahn kein Abstieg — Abendplan anpassen",
           "severity": "warn"
         }
-      ]
+      ],
+      "url": "https://www.booking.com/hotel/ch/berggasthaus-first.html"
     },
     {
       "id": "g11",
@@ -1063,7 +1065,8 @@
           "text_de": "Zimmer evtl. ausgebucht — prüfen",
           "severity": "warn"
         }
-      ]
+      ],
+      "url": "https://www.booking.com/hotel/ch/elite-taesch.html"
     },
     {
       "id": "m2",
@@ -1343,7 +1346,8 @@
       "desc_de": "✅ Gebucht · bei S4 Manegg",
       "addr": "Greencity（Manegg）",
       "addr_en": "Greencity (Manegg)",
-      "addr_de": "Greencity (Manegg)"
+      "addr_de": "Greencity (Manegg)",
+      "url": "https://www.booking.com/hotel/ch/meininger-zurich-greencity.html"
     },
     {
       "id": "z17",
@@ -1392,6 +1396,48 @@
       "addr": "Rindermarkt 6（老城）",
       "addr_en": "Rindermarkt 6 (old town)",
       "addr_de": "Rindermarkt 6"
+    },
+    {
+      "id": "z-abnb",
+      "name": "蘇黎世 · Airbnb（兩晚整套）",
+      "name_en": "Zürich · Airbnb (whole place, 2 nights)",
+      "name_de": "Zürich · Airbnb (2 Nächte)",
+      "nameLocal": "Airbnb Zürich",
+      "city": "zurich",
+      "cat": "hotel",
+      "lat": 47.3769,
+      "lng": 8.5417,
+      "price_chf": 600,
+      "price_twd": 22800,
+      "hours": "Check-in 依房東",
+      "desc": "✅ 已訂 · 整套房源含廚房 · 7/18–7/20 兩晚（→ Dina）· 📍地圖為市中心概略位置，確切地址訂房後由房東提供",
+      "desc_en": "✅ Booked · whole place w/ kitchen · 7/18–7/20, 2 nights (→ Dina) · 📍 marker is approx. city centre; exact address from host after booking",
+      "desc_de": "✅ Gebucht · ganze Wohnung mit Küche · 18.–20.7. (→ Dina) · 📍 ungefähre Lage",
+      "addr": "蘇黎世市區（概略）",
+      "addr_en": "Zürich city (approx.)",
+      "addr_de": "Zürich (ungefähr)",
+      "url": "https://www.airbnb.com/l/imXZ78IT"
+    },
+    {
+      "id": "i-abnb",
+      "name": "因特拉肯 · Airbnb",
+      "name_en": "Interlaken · Airbnb",
+      "name_de": "Interlaken · Airbnb",
+      "nameLocal": "Airbnb Interlaken",
+      "city": "interlaken",
+      "cat": "hotel",
+      "lat": 46.6863,
+      "lng": 7.8632,
+      "price_chf": 400,
+      "price_twd": 15200,
+      "hours": "Check-in 依房東",
+      "desc": "✅ 已訂 · 整套房源含廚房 · 7/21–7/22 一晚（→ Andy）· 📍地圖為市中心概略位置，確切地址訂房後由房東提供",
+      "desc_en": "✅ Booked · whole place w/ kitchen · 7/21–7/22, 1 night (→ Andy) · 📍 marker is approx. city centre; exact address from host after booking",
+      "desc_de": "✅ Gebucht · ganze Wohnung mit Küche · 21.–22.7. (→ Andy) · 📍 ungefähre Lage",
+      "addr": "因特拉肯市區（概略）",
+      "addr_en": "Interlaken town (approx.)",
+      "addr_de": "Interlaken (ungefähr)",
+      "url": "https://www.airbnb.com.tw/rooms/994937274855398532"
     }
   ],
   "schedule": [
@@ -2507,9 +2553,9 @@
             "de": "🍳 offen"
           },
           {
-            "zh": "🧺 洗衣待確認",
-            "en": "🧺 Laundry TBC",
-            "de": "🧺 offen"
+            "zh": "🧺 無洗衣機（官網未列，可櫃檯問代洗）",
+            "en": "🧺 No washer (not listed; ask reception for laundry service)",
+            "de": "🧺 keine Waschmaschine (Rezeption fragen)"
           }
         ]
       },
@@ -2539,9 +2585,9 @@
             "de": "🍳 Gästeküche"
           },
           {
-            "zh": "🧺 洗衣待確認",
-            "en": "🧺 Laundry TBC",
-            "de": "🧺 offen"
+            "zh": "🧺 有自助洗衣機（付費，含洗劑，洗衣房 24h）",
+            "en": "🧺 Self-service laundry (washer+dryer, coin/fee, detergent incl., 24h)",
+            "de": "🧺 Waschsalon (SB, gegen Gebühr, Waschmittel inkl.)"
           }
         ]
       }
@@ -3056,9 +3102,9 @@
           "de": "Evtl. Schlafsack"
         },
         {
-          "zh": "洗衣：琉森 Liberté 無洗衣機（櫃檯可指自助洗衣店）；兩間 Airbnb 洗衣機待確認——帶旅行洗衣精備用",
-          "en": "Laundry: no washer at the Lucerne Liberté (reception knows the nearest laundromat); Airbnb washers TBC — pack travel detergent",
-          "de": "Wäsche: Liberté ohne Waschmaschine — Reisewaschmittel mitnehmen"
+          "zh": "洗衣：7/25 蘇黎世 MEININGER 有自助洗衣機（付費含洗劑，24h）＝全程主要洗衣點；琉森 Liberté、格林德瓦山屋、策馬特 Mountime 皆無；兩間 Airbnb 待房東確認——帶旅行洗衣精備用",
+          "en": "Laundry: MEININGER Zürich (7/25) has self-service washer+dryer (fee, detergent incl., 24h) = main laundry stop; none at Lucerne Liberté, Grindelwald hut, or Zermatt Mountime; both Airbnbs pending host confirmation — pack travel detergent",
+          "de": "Wäsche: MEININGER Zürich (25.7.) mit Waschsalon = Haupt-Waschstopp; sonst keine — Reisewaschmittel mitnehmen"
         }
       ]
     },

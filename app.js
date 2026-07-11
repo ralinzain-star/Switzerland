@@ -608,7 +608,9 @@ function renderPOIs() {
       (p.warnings && p.warnings.length ? ' <span class="poi-warn mi material-symbols-outlined" style="font-size:15px">warning</span>' : '') + '</div>' +
       (n.secondary ? '<div class="poi-sub">' + esc(n.secondary) + '</div>' : '') +
       '<div class="poi-desc">' + esc(getField(p, 'desc')) + '</div></div>' +
-      '<div class="poi-links"><a href="' + gm + '" target="_blank" rel="noopener" title="Google Maps" onclick="event.stopPropagation()">' + mi('location_on', 16) + '</a></div>' +
+      '<div class="poi-links">' +
+      (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener" title="' + t('booking_link') + '" onclick="event.stopPropagation()">' + mi('open_in_new', 16) + '</a>' : '') +
+      '<a href="' + gm + '" target="_blank" rel="noopener" title="Google Maps" onclick="event.stopPropagation()">' + mi('location_on', 16) + '</a></div>' +
       '</div>';
   });
   el.innerHTML = html || '<div style="color:var(--text-3);padding:20px">—</div>';
@@ -678,6 +680,7 @@ function openPOIModal(id, fromMap) {
   const price = p.price_twd > 0 ? ('CHF ' + p.price_chf + '（' + fmtMoneyForce(p.price_twd, 'TWD') + '）') : t('poi_free');
   html += '<div class="poi-modal-row">' + mi('payments') + '<span>' + price + '</span></div>';
   if (getField(p, 'desc')) html += '<div class="poi-modal-row">' + mi('info') + '<span>' + esc(getField(p, 'desc')) + '</span></div>';
+  if (p.url) html += '<div class="poi-modal-row">' + mi('open_in_new') + '<span><a href="' + p.url + '" target="_blank" rel="noopener">' + t('booking_link') + '</a></span></div>';
   html += '<div style="margin-top:8px"><span class="poi-modal-badge" style="background:' + (CAT_COLORS[p.cat] || '#888') + '">' + getCatName(p.cat) + '</span></div>';
   html += '</div>';
   if (p.dining) {
