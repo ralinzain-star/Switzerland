@@ -1694,18 +1694,6 @@
           "reservation": false
         },
         {
-          "sh": 14,
-          "eh": 16,
-          "name": "⚽ FIFA 足球博物館",
-          "name_en": "⚽ FIFA World Football Museum",
-          "name_de": "⚽ FIFA Museum",
-          "cat": "attraction",
-          "note": "世界盃獎盃＋足球史 3 層 · 週二–日 10:00–18:00（週一休）· 成人 CHF 26，持 STP 免費 · Tessinerplatz（Bahnhof Enge，電車/S-Bahn 幾分鐘）· 逛約 1.5–2 小時 · 館內 Sportsbar 1904 晚上也能看球",
-          "note_en": "World Cup trophy + 3 floors of football history · Tue–Sun 10–18 (closed Mon) · CHF 26, free with Swiss Travel Pass · Tessinerplatz (Bahnhof Enge) · ~1.5–2h · Sportsbar 1904 inside shows matches at night",
-          "note_de": "WM-Pokal + 3 Etagen Fussballgeschichte · Di–So 10–18 (Mo zu) · mit STP gratis · Tessinerplatz · ~1,5–2 Std",
-          "map": "https://www.google.com/maps/search/?api=1&query=FIFA+World+Football+Museum+Z%C3%BCrich"
-        },
-        {
           "sh": 17,
           "eh": 18.5,
           "name": "Check-in 蘇黎世住宿",
@@ -1801,17 +1789,6 @@
         {
           "sh": 13.5,
           "eh": 15,
-          "name": "班霍夫大街＋Bürkliplatz＋湖畔散步",
-          "name_en": "Bahnhofstrasse + Bürkliplatz + lake promenade",
-          "name_de": "Bahnhofstrasse + Bürkliplatz + Seepromenade",
-          "cat": "attraction",
-          "note": "🚶 週日商店公休，逛櫥窗＋湖畔散步剛好（採買已在週六完成）",
-          "note_en": "🚶 Sunday — shops closed, so window-shop & stroll the lakefront (shopping done Saturday)",
-          "note_de": "🚶 Sonntag — Läden zu: Schaufensterbummel & Seepromenade"
-        },
-        {
-          "sh": 15,
-          "eh": 17,
           "name": "瑞士國立博物館",
           "name_en": "Swiss National Museum",
           "name_de": "Landesmuseum",
@@ -1821,7 +1798,19 @@
           "note_de": "Mit STP gratis"
         },
         {
-          "sh": 17,
+          "sh": 15.0,
+          "eh": 17.0,
+          "name": "⚽ FIFA 足球博物館",
+          "name_en": "⚽ FIFA World Football Museum",
+          "name_de": "⚽ FIFA Museum",
+          "cat": "attraction",
+          "note": "世界盃獎盃＋足球史 3 層 · 週二–日 10:00–18:00（週一休）· 成人 CHF 26，持 STP 免費 · Tessinerplatz（Bahnhof Enge，電車/S-Bahn 幾分鐘）· 逛約 1.5–2 小時 · 館內 Sportsbar 1904 晚上也能看球",
+          "note_en": "World Cup trophy + 3 floors of football history · Tue–Sun 10–18 (closed Mon) · CHF 26, free with Swiss Travel Pass · Tessinerplatz (Bahnhof Enge) · ~1.5–2h · Sportsbar 1904 inside shows matches at night",
+          "note_de": "WM-Pokal + 3 Etagen Fussballgeschichte · Di–So 10–18 (Mo zu) · mit STP gratis · Tessinerplatz · ~1,5–2 Std",
+          "map": "https://www.google.com/maps/search/?api=1&query=FIFA+World+Football+Museum+Z%C3%BCrich"
+        },
+        {
+          "sh": 17.0,
           "eh": 18.5,
           "name": "蘇黎世湖畔散步",
           "name_en": "Lake Zurich stroll",
