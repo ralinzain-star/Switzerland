@@ -49,6 +49,7 @@ const I18N = {
   cal_title:      { zh:'行程日曆', en:'Itinerary', de:'Reiseplan' },
   cal_week1:      { zh:'第 1 週（7/17–7/23）', en:'Week 1 (Jul 17–23)', de:'Woche 1 (17.–23.7.)' },
   cal_week2:      { zh:'第 2 週（7/24–7/27）', en:'Week 2 (Jul 24–27)', de:'Woche 2 (24.–27.7.)' },
+  plan_pick:      { zh:'方案', en:'Plan', de:'Variante' },
   clock_dest:     { zh:'瑞士', en:'Switzerland', de:'Schweiz' },
   clock_home:     { zh:'台灣', en:'Taiwan', de:'Taiwan' },
   res_needed:     { zh:'需訂位', en:'Reserve', de:'Reservieren' },
@@ -61,6 +62,8 @@ const I18N = {
   cat_transport:  { zh:'交通', en:'Transit', de:'Verkehr' },
   cat_hotel:      { zh:'住宿', en:'Hotel', de:'Hotel' },
   cat_other:      { zh:'其他', en:'Other', de:'Sonstiges' },
+  cat_wake:       { zh:'起床', en:'Wake', de:'Aufstehen' },
+  cat_sleep:      { zh:'就寢', en:'Sleep', de:'Schlaf' },
 
   city_zurich:     { zh:'蘇黎世', en:'Zurich', de:'Zürich' },
   city_lucerne:    { zh:'琉森', en:'Lucerne', de:'Luzern' },
@@ -185,8 +188,8 @@ const HOME_TZ = 'Asia/Taipei';
 const HOUR_START = 5, HOUR_END = 23;
 const LANGS = ['zh', 'en', 'de'];
 const LANG_NAMES = { zh:'繁體中文', en:'English', de:'Deutsch' };
-const CAT_COLORS = { attraction:'#e8664a', hotel:'#4a7ce8', food:'#4aad5b', cafe:'#9b6ad4', shopping:'#e8964a', transport:'#4ab8c9', work:'#6a6ad4', other:'#888', personal:'#c9b99a' };
-const CAT_ICONS = { attraction:'attractions', food:'restaurant', cafe:'coffee', transport:'directions_transit', work:'laptop_mac', hotel:'hotel', shopping:'shopping_bag', personal:'bedtime', other:'event' };
+const CAT_COLORS = { attraction:'#e8664a', hotel:'#4a7ce8', food:'#4aad5b', cafe:'#9b6ad4', shopping:'#e8964a', transport:'#4ab8c9', work:'#6a6ad4', other:'#888', personal:'#c9b99a', wake:'#e8a23a', sleep:'#6a6ad4' };
+const CAT_ICONS = { attraction:'attractions', food:'restaurant', cafe:'coffee', transport:'directions_transit', work:'laptop_mac', hotel:'hotel', shopping:'shopping_bag', personal:'bedtime', other:'event', wake:'wb_sunny', sleep:'bedtime' };
 const CITY_KEYS = ['zurich','lucerne','stoos','interlaken','grindelwald','zermatt'];
 const CITY_COLORS = { zurich:'#3a7bd5', lucerne:'#4ab8c9', stoos:'#6a6ad4', interlaken:'#2e7d32', grindelwald:'#e8964a', zermatt:'#c0392b', taipei:'#888', all:'#666' };
 const CITY_ICONS = { zurich:'water', lucerne:'directions_boat', stoos:'landscape', interlaken:'forest', grindelwald:'hiking', zermatt:'ac_unit', taipei:'flight' };
@@ -227,6 +230,7 @@ function getCatName(cat) { return t('cat_' + cat); }
 function mi(name, size) { return '<span class="mi material-symbols-outlined"' + (size ? ' style="font-size:' + size + 'px"' : '') + '>' + name + '</span>'; }
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function fmtHour(h) { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return String(hh).padStart(2, '0') + ':' + String(mm).padStart(2, '0'); }
+function evTime(ev) { return ev.eh > ev.sh ? fmtHour(ev.sh) + '–' + fmtHour(ev.eh) : fmtHour(ev.sh); }
 function localDateStr(d) { d = d || new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
 function fmtMoney(twd) {
   if (currentCurrency === 'CHF') {
@@ -269,6 +273,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   TRIP = await loadTrip();
   currentLang = localStorage.getItem('trip-lang') || 'zh';
   if (LANGS.indexOf(currentLang) < 0) currentLang = 'zh';
+  safe('plans', applyPlans);
   safe('today', renderToday);
   safe('nav', initNav);
   safe('lang', initLangMenus);
@@ -368,7 +373,7 @@ function renderToday() {
     const focus = current || next;
     html += '<div class="today-todos"><div class="today-todos-label">' + mi(current ? 'my_location' : 'schedule', 16) + ' ' + (current ? t('today_now') : t('today_next')) + '</div>';
     if (focus) {
-      html += '<div class="today-todo-item now">' + mi(getEvIcon(focus), 20) + '<div class="tt-body"><div class="tt-name">' + esc(getEventName(focus)) + '</div><div class="tt-sub">' + fmtHour(focus.sh) + '–' + fmtHour(focus.eh) + ' · ' + esc(getEventNote(focus)) + restLine(focus) + '</div></div></div>';
+      html += '<div class="today-todo-item now">' + mi(getEvIcon(focus), 20) + '<div class="tt-body"><div class="tt-name">' + esc(getEventName(focus)) + '</div><div class="tt-sub">' + evTime(focus) + ' · ' + esc(getEventNote(focus)) + restLine(focus) + '</div></div></div>';
     } else {
       html += '<div class="today-todo-item now">' + mi('coffee', 20) + '<div class="tt-body"><div class="tt-name">' + t('today_free') + ' ☕</div></div></div>';
     }
@@ -383,7 +388,7 @@ function renderToday() {
       html += '<div class="today-todos"><div class="today-todos-label">' + mi(p.icon, 16) + ' ' + t(p.key) + '</div>';
       p.evs.forEach(ev => {
         const active = nowHour >= ev.sh && nowHour < ev.eh;
-        html += '<div class="today-todo-item' + (active ? ' now' : '') + '">' + mi(getEvIcon(ev), 20) + '<div class="tt-body"><div class="tt-name">' + esc(getEventName(ev)) + '</div><div class="tt-sub">' + fmtHour(ev.sh) + '–' + fmtHour(ev.eh) + (getEventNote(ev) ? ' · ' + esc(getEventNote(ev)) : '') + restLine(ev) + '</div></div></div>';
+        html += '<div class="today-todo-item' + (active ? ' now' : '') + '">' + mi(getEvIcon(ev), 20) + '<div class="tt-body"><div class="tt-name">' + esc(getEventName(ev)) + '</div><div class="tt-sub">' + evTime(ev) + (getEventNote(ev) ? ' · ' + esc(getEventNote(ev)) : '') + restLine(ev) + '</div></div></div>';
       });
       html += '</div>';
     });
@@ -530,7 +535,7 @@ function renderTodayCard() {
     const cur = !showPreview && nowHour >= ev.sh && nowHour < ev.eh;
     html += '<div class="today-ev' + (past ? ' past' : '') + (cur ? ' current' : '') + '">' +
       '<span class="today-ev-dot" style="background:' + (CAT_COLORS[ev.cat] || '#888') + '"></span>' +
-      '<span class="today-ev-time">' + fmtHour(ev.sh) + '–' + fmtHour(ev.eh) + '</span>' +
+      '<span class="today-ev-time">' + evTime(ev) + '</span>' +
       '<span>' + esc(getEventName(ev)) + '</span></div>';
   });
   html += '</div></div>';
@@ -712,6 +717,46 @@ function weekChunks() {
   for (let i = 0; i < days.length; i += 7) chunks.push(days.slice(i, i + 7));
   return chunks;
 }
+/* ---------- day plans (7/22 alternatives) ---------- */
+let planSel = {};
+try { planSel = JSON.parse(localStorage.getItem('trip-plans') || '{}'); } catch (e) { planSel = {}; }
+function planIndex(d) {
+  if (!d.plans || !d.plans.length) return -1;
+  let i = planSel[d.date];
+  if (i == null) i = d.defaultPlan || 0;
+  if (i < 0 || i >= d.plans.length) i = 0;
+  return i;
+}
+function applyPlans() {
+  (TRIP.schedule || []).forEach(d => {
+    if (d.plans && d.plans.length) {
+      const i = planIndex(d);
+      d.events = d.plans[i].events;
+    }
+  });
+}
+function selectPlan(date, idx) {
+  planSel[date] = idx;
+  try { localStorage.setItem('trip-plans', JSON.stringify(planSel)); } catch (e) {}
+  applyPlans();
+  renderCalendar();
+  safe('today', renderToday);
+  safe('overview', renderOverview);
+  safe('talloc', renderTimeAlloc);
+}
+function planSwitchHTML(d, mode) {
+  if (!d.plans || !d.plans.length) return '';
+  const cur = planIndex(d);
+  if (mode === 'sel') {
+    let o = '';
+    d.plans.forEach((p, i) => { o += '<option value="' + i + '"' + (i === cur ? ' selected' : '') + '>' + esc(getI18nObj(p.label)) + '</option>'; });
+    return '<select class="plan-select" data-date="' + d.date + '">' + o + '</select>';
+  }
+  let o = '<div class="plan-switch" data-date="' + d.date + '">';
+  d.plans.forEach((p, i) => { o += '<button class="plan-pill' + (i === cur ? ' on' : '') + '" data-date="' + d.date + '" data-plan="' + i + '">' + esc(getI18nObj(p.label)) + '</button>'; });
+  o += '</div>';
+  return o;
+}
 function renderCalendar() {
   const wrap = document.getElementById('cal-wrap');
   if (!wrap) return;
@@ -736,7 +781,7 @@ function renderCalendar() {
   html += '<div class="cal-header"><div></div>';
   days.forEach(d => {
     const isToday = d.date === today;
-    html += '<div class="cal-day-hdr' + (isToday ? ' current' : '') + '"><div class="cd-name">' + weekdayName(d.date) + '</div><div class="cd-num">' + parseInt(d.date.slice(8), 10) + '</div><div class="cd-city">' + esc(getScheduleCityName(d.city)) + '</div></div>';
+    html += '<div class="cal-day-hdr' + (isToday ? ' current' : '') + '"><div class="cd-name">' + weekdayName(d.date) + '</div><div class="cd-num">' + parseInt(d.date.slice(8), 10) + '</div><div class="cd-city">' + esc(getScheduleCityName(d.city)) + '</div>' + planSwitchHTML(d, 'sel') + '</div>';
   });
   html += '</div><div class="cal-scroll"><div class="cal-grid" style="--cal-cols:' + cols + '"><div class="cal-time-col">';
   for (let h = HOUR_START; h < HOUR_END; h++) html += '<div class="cal-time-slot">' + String(h).padStart(2, '0') + ':00</div>';
@@ -745,11 +790,12 @@ function renderCalendar() {
     html += '<div class="cal-day-col" data-date="' + d.date + '">';
     for (let h = HOUR_START; h < HOUR_END; h++) html += '<div class="cal-hour-line"></div>';
     d.events.forEach(ev => {
+      if (ev.sh < HOUR_START) return; // small-hours markers (e.g. bedtime line) — shown in list views only
       const top = (ev.sh - HOUR_START) * 60;
       const height = Math.max(22, (ev.eh - ev.sh) * 60 - 3);
       html += '<div class="cal-event cat-' + (ev.cat || 'other') + '" style="top:' + top + 'px;height:' + height + 'px">' +
         '<span class="ev-title">' + esc(getEventName(ev)) + '</span>' +
-        '<span class="ev-loc">' + fmtHour(ev.sh) + '–' + fmtHour(ev.eh) + '</span>' +
+        '<span class="ev-loc">' + evTime(ev) + '</span>' +
         (ev.restaurant && height > 54 ? '<div class="ev-rest">🍽️ ' + esc(ev.restaurant) + (ev.map ? ' <a href="' + ev.map + '" target="_blank" rel="noopener">📍</a>' : '') + (ev.reservation === 'needed' ? ' ⚠️' : '') + '</div>' : '') +
         (ev.booking_url && height > 76 ? '<div class="ev-rest">🎫 <a href="' + ev.booking_url + '" target="_blank" rel="noopener">' + t('booking_link') + '</a></div>' : '') +
         '</div>';
@@ -760,11 +806,11 @@ function renderCalendar() {
   /* mobile list */
   html += '<div class="calendar-mobile">';
   days.forEach(d => {
-    html += '<div class="cal-m-day"><div class="cal-m-date"><div class="cmd-name">' + weekdayName(d.date) + '</div><div class="cmd-num">' + parseInt(d.date.slice(8), 10) + '</div><div class="cmd-city">' + esc(getScheduleCityName(d.city)) + '</div></div><div class="cal-m-events" data-date="' + d.date + '">';
+    html += '<div class="cal-m-day"><div class="cal-m-date"><div class="cmd-name">' + weekdayName(d.date) + '</div><div class="cmd-num">' + parseInt(d.date.slice(8), 10) + '</div><div class="cmd-city">' + esc(getScheduleCityName(d.city)) + '</div></div><div class="cal-m-events" data-date="' + d.date + '">' + planSwitchHTML(d, 'pill');
     d.events.forEach(ev => {
       html += '<div class="cal-m-event" style="border-color:' + (CAT_COLORS[ev.cat] || '#000') + '" data-sh="' + ev.sh + '">' +
         '<div class="cme-title">' + esc(getEventName(ev)) + '</div>' +
-        '<div class="cme-time">' + fmtHour(ev.sh) + '–' + fmtHour(ev.eh) + '</div>' +
+        '<div class="cme-time">' + evTime(ev) + '</div>' +
         (getEventNote(ev) ? '<div class="cme-note">' + esc(getEventNote(ev)) + '</div>' : '') +
         (ev.restaurant ? '<div class="cme-rest">🍽️ ' + esc(ev.restaurant) + (ev.map ? ' <a href="' + ev.map + '" target="_blank" rel="noopener">📍Map</a>' : '') + (ev.reservation === 'needed' ? ' ⚠️' + t('res_needed') : (ev.reservation === true ? ' ✅' : '')) + '</div>' : '') +
         (ev.booking_url ? '<div class="cme-rest">🎫 <a href="' + ev.booking_url + '" target="_blank" rel="noopener">' + t('booking_link') + '</a>' + (ev.booking_note ? ' · ' + esc(ev.booking_note) : '') + '</div>' : '') +
@@ -774,6 +820,8 @@ function renderCalendar() {
   });
   html += '</div>';
   wrap.innerHTML = html;
+  wrap.querySelectorAll('.plan-pill').forEach(b => b.addEventListener('click', () => selectPlan(b.getAttribute('data-date'), parseInt(b.getAttribute('data-plan'), 10))));
+  wrap.querySelectorAll('.plan-select').forEach(s => s.addEventListener('change', () => selectPlan(s.getAttribute('data-date'), parseInt(s.value, 10))));
   renderNowLine();
 }
 function renderNowLine() {

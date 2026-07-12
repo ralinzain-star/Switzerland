@@ -25,6 +25,8 @@
   --cat-work: #6a6ad4;
   --cat-other: #888;
   --cat-personal: #c9b99a;
+  --cat-wake: #e8a23a;
+  --cat-sleep: #6a6ad4;
 
   --chart-bar: #888;
   --chart-bar-hover: #555;
@@ -322,6 +324,8 @@ button { font-family: var(--font); }
 .cal-event.cat-shopping { background: #fdf3e3; color: #9a6a1a; }
 .cal-event.cat-personal { background: #f5ede0; color: #8a6a3a; border: 1px solid #e8d5b8; }
 .cal-event.cat-other { background: #eee; color: #555; }
+.cal-event.cat-wake { background: #fdf0dc; color: #9a6a1a; border: 1px solid #f0d9a8; }
+.cal-event.cat-sleep { background: #e6e6f7; color: #4a4a9b; border: 1px solid #cfcff0; }
 .cal-now-line { position: absolute; left: 0; right: 0; height: 2px; background: #e8664a; z-index: 5; pointer-events: none; }
 .cal-now-line::before { content: ''; position: absolute; left: -3px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #e8664a; }
 .cal-now-label { position: absolute; left: 2px; top: -9px; background: #e8664a; color: #fff; font-size: .6rem; padding: 1px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
@@ -523,3 +527,11 @@ button { font-family: var(--font); }
 .wd-city-row:has(.wd-city-taipei) .wd-city-dot { background: #888; }
 .am-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 2px; }
 .am-chip { font-size: .68rem; background: var(--bg); color: var(--text-2); border-radius: 99px; padding: 3px 10px; font-weight: 600; }
+
+/* ---------- day plan switcher (7/22 alternatives) ---------- */
+.plan-select{margin-top:6px;width:100%;max-width:100%;box-sizing:border-box;font-family:var(--font);font-size:.66rem;padding:2px 4px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);cursor:pointer;text-align:center}
+.cal-day-hdr .cd-city{overflow:hidden;text-overflow:ellipsis}
+.plan-switch{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:2px 0 10px}
+.plan-switch-lab{display:none}
+.plan-pill{padding:6px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;font-family:var(--font);font-size:.75rem;color:var(--text-2);cursor:pointer;text-align:center}
+.plan-pill.on{background:var(--text);color:var(--surface);border-color:var(--text);font-weight:600}
